@@ -10,8 +10,8 @@ app.use(cors());
 
 const repositories = [];
 
-app.get("/repositories", async (request, response) => {
-  return await response.json(repositories);
+app.get("/repositories", (request, response) => {
+  return response.json(repositories);
 });
 
 app.post("/repositories", (request, response) => {
@@ -19,7 +19,7 @@ app.post("/repositories", (request, response) => {
   repository.id = uuid();
   repository.likes = 0;
   repositories.push(repository);
-  return response.send(repository);
+  return response.json(repository);
 });
 
 app.put("/repositories/:id", (request, response) => {
